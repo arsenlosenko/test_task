@@ -1,0 +1,17 @@
+# Server block for phppgadmin service
+server{
+        server_name     phppgadmin.example.com;
+        root            /var/www/html/phppgadmin;
+
+        access_log      /var/log/phppgadmin/access.log;
+        error_log       /var/log/phppgadmin/error.log;
+
+        location ~ \.php$ {
+                try_files $uri =404;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_pass unix:/var/run/php-fpm7.0.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME /var/www/html/postgres$fastcgi_script_name;
+                include /etc/nginx/fastcgi_params;
+        }
+}
