@@ -1,7 +1,7 @@
 import subprocess
 import json
 
-with open('country-codes.json') as data_file:
+with open('country_codes.json') as data_file:
     data = json.load(data_file)
 
 for item in data:
