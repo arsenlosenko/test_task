@@ -1,9 +1,12 @@
 import subprocess
 import json
 
+
+#open json file with country data
 with open('/home/test_task/country_codes.json', encoding='utf-8') as data_file:
     data = json.load(data_file)
 
+#insert data in the database
 for item in data:
     try:
             subprocess.call(['psql', 'application', '-c', "insert into country (iso, name, nicename, iso3, numcode, phonecode) values ('{}','{}','{}','{}','{}','{}')".format(item["ISO3166-1-Alpha-2"],
