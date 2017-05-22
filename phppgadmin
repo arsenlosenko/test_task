@@ -1,6 +1,6 @@
 # Server block for phppgadmin service
 server{
-        server_name     phppgadmin.example.com;
+        server_name     0.0.0.0;
         root            /var/www/html/phppgadmin;
 
         access_log      /var/log/phppgadmin/access.log;
