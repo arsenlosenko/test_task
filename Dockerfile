@@ -18,11 +18,11 @@ ADD index.html /var/www/html
 ADD phppgadmin.tar.gz /usr/share
 
 RUN useradd -p support support
-RUN mkdir -p /home/support/test_task/
+RUN mkdir /home/support;mkdir /home/support/test_task
 
 COPY countryInfo.sh /home/support/test_task
 COPY json_import.py /home/support/test_task
-ADD country_codes.tar.gz /home/support/test_task
+COPY country_codes.json /home/support/test_task
 
 USER postgres
 RUN /etc/init.d/postgresql start \
@@ -41,22 +41,5 @@ RUN echo host all all localhost trust >>  /etc/postgresql/9.3/main/pg_hba.conf
 
 EXPOSE 5432
 
-USER support
-RUN sudo -S service postgresql start | echo support
-RUN psql application -c "select * from country;";
 
 
-#RUN psql -h localhost -p 5432 -c "create database application"
-#RUN psql -h localhost -p 5432 application -c "create table country(id serial not null primary key, iso char(2) not null, name varchar(80) not null, iso3 char(3) default null, numcode smallint(6) default null, phonecode int(5) not null);";
-
-
-
-
-
-
-
-
-
-
-
-CMD /etc/init.d/nginx start && /etc/init.d/php5-fpm start && /etc/init.d/postgresql start
