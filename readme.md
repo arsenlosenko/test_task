@@ -7,7 +7,6 @@ When pull will end, use next command to run the image:
 
 docker run -it arsenlosenko/test_task
 
-After which image will start and execute countryInfo.sh
+After this command, image will start its services automatically, so you can check created database with your browser. To do this, go to 172.17.0.2/phppgadmin
+If you want to see output of countryInfo.sh, go to 172.17.0.2.
 
-
-P.S: there is still an issue with phppgadmin on nginx,it worked fine  before configuring script for data import into database, but right now it's not working properly, I am working on it. 
